@@ -27,13 +27,37 @@ def intern_logic(unit, self):
         # Deposits blueium ore in a machine for it if we have any.
 
         # Finds a machine in the game's tiles that takes blueium ore.
-        for tile in self.game.tiles:
-            if tile.machine is not None and tile.machine.ore_type == 'blueium':
-                # Moves towards the found machine until we reach it or are out of moves.
-                while unit.moves > 0 and len(self.find_path(unit.tile, tile)) > 1:
-                    if not unit.move(self.find_path(unit.tile, tile)[0]):
-                        break
+        machine = find_closest_machine(self, unit, 'blueium')
+        if machine.tile is not None:
+            # Moves towards the found machine until we reach it or are out of moves.
+            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 1:
+                if not unit.move(self.find_path(unit.tile, machine.tile)[0]):
+                    break
 
-                # Deposits blueium ore on the machine if we have reached it.
-                if len(self.find_path(unit.tile, tile)) <= 1:
-                    unit.drop(tile, 0, 'blueium ore')
+            # Deposits blueium ore on the machine if we have reached it.
+            if len(self.find_path(unit.tile, machine.tile)) <= 1:
+                unit.drop(machine.tile, 0, 'blueium ore')
+
+
+# It is possible that this method will return a machine that doesnt have a tile.  Check that machine.tile is not None
+def find_closest_machine(self, unit, ore_type):
+    closest_machine = Machine()
+    for tile in self.game.tiles:
+        if tile.machine is not None and tile.machine.ore_type == ore_type:
+            machine = Machine()
+            machine.initialize(tile, len(self.find_path(unit.tile, tile)))
+            if machine.distance < closest_machine.distance:
+                closest_machine = machine
+
+    return closest_machine
+
+
+class Machine:
+    def __init__(self):
+        # set distance to extremely long number so comparision to an unitialized machine will always be farther
+        self.distance = 100000
+        self.tile = None
+
+    def initialize(self, tile, distance):
+        self.tile = tile
+        self.distance = distance
