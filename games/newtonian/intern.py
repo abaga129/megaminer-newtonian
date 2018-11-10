@@ -1,3 +1,5 @@
+import logging
+
 def intern_logic(unit, self):
     # If the unit is an intern, collects blueium ore.
     # Note: You also need to collect redium ore.
@@ -7,11 +9,14 @@ def intern_logic(unit, self):
         # Your intern's current target.
         target = None
 
-        # Goes to collect blueium ore that isn't on a machine.
+        # Goes to collect any ore that isn't on a machine, and that is closest
+        shortestlength=1000000;
         for tile in self.game.tiles:
             if tile.blueium_ore > 0 and tile.machine is None:
-                target = tile
-                break
+                if len(self.find_path(unit.tile, target)) < shortestlength:
+                    logging.info('shorter path to ore found')
+                    shortestlength = len(self.find_path(unit.tile, target))
+                    target = tile
 
         # Moves towards our target until at the target or out of moves.
         if len(self.find_path(unit.tile, target)) > 0:
