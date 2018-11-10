@@ -80,7 +80,7 @@ class AI(BaseAI):
 
     def run_turn(self):
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-
+        logging.info('Running turn')
         # Goes through all the units that you own.
         for unit in self.player.units:
             if unit_is_physicist(unit):

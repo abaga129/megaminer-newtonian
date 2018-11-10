@@ -10,12 +10,12 @@ def intern_logic(unit, self):
         target = None
 
         # Goes to collect any ore that isn't on a machine, and that is closest
-        shortestlength=1000000;
+        shortestlength=1000000
         for tile in self.game.tiles:
             if tile.blueium_ore > 0 and tile.machine is None:
-                if len(self.find_path(unit.tile, target)) < shortestlength:
-                    logging.info('shorter path to ore found')
-                    shortestlength = len(self.find_path(unit.tile, target))
+                if len(self.find_path(unit.tile, tile)) < shortestlength:
+                    shortestlength = len(self.find_path(unit.tile, tile))
+                    logging.info('shorter path to ore found, path is length: '+shortestlength)
                     target = tile
 
         # Moves towards our target until at the target or out of moves.
