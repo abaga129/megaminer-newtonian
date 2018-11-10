@@ -1,13 +1,13 @@
 def unit_is_intern(unit):
-    return unit.job.title == 'intern'
+    return unit is not None and unit.tile is not None and unit.job.title == 'intern'
 
 
 def unit_is_physicist(unit):
-    return unit.job.title == 'physicist'
+    return unit is not None and unit.tile is not None and unit.job.title == 'physicist'
 
 
 def unit_is_manager(unit):
-    return unit.job.title == 'manager'
+    return unit is not None and unit.tile is not None and unit.job.title == 'manager'
 
 
 class MapState:
