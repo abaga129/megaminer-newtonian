@@ -59,14 +59,14 @@ def manager_logic(unit, self):
         # Picks up blueium once we reach our target's tile.
         if len(self.find_path(unit.tile, target)) <= 1 and target.blueium > 0:            
             print('***********************************************************************')
-            print('Manager ' + str(unit.id) + ' picking up refined blueium')
+            print('MANAGER ' + str(unit.id) + ' PICKING UP REFINED BLUEIUM')
             print('***********************************************************************')
             unit.pickup(target, 0, 'blueium')
 
         # Picks up blueium once we reach our target's tile.
         if len(self.find_path(unit.tile, target)) <= 1 and target.redium > 0:
             print('***********************************************************************')
-            print('Manager ' + str(unit.id) + ' picking up refined redium')
+            print('MANAGER ' + str(unit.id) + ' PICKING UP REFINED REDIUM')
             print('***********************************************************************')
             unit.pickup(target, 0, 'redium')
 
@@ -82,12 +82,12 @@ def manager_logic(unit, self):
         if len(self.find_path(unit.tile, gen_tile)) <= 0:
             if unit.blueium > 0:
                 print('***********************************************************************')
-                print('Manager ' + str(unit.id) + ' dropping off refined blueium')
+                print('MANAGER ' + str(unit.id) + ' DROPPING OFF REFINED BLUEIUM')
                 print('***********************************************************************')
                 unit.drop(gen_tile, 0, 'blueium')
             elif unit.redium > 0:
                 print('***********************************************************************')
-                print('Manager ' + str(unit.id) + ' dropping off refined redium')
+                print('MANAGER ' + str(unit.id) + ' DROPPING OFF REFINED REDIUM')
                 print('***********************************************************************')
                 unit.drop(gen_tile, 0, 'redium')
 
