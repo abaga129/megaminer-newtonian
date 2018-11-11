@@ -1,22 +1,27 @@
 #
 # Primary function of manager: 
 # Carry refined blueium and redium
-# Find enemy interns, stuns, and attacks them if there is no blueium to take to the generator.
+# Find enemy interns, stuns, and attacks them if there is no materials to take to the generator.
 #
 
 def manager_logic(unit, self):
     target = None
+    distance = 1000
 
     for tile in self.game.tiles:
-        if (tile.blueium > 1 and unit.blueium < unit.job.carry_limit) \
-                or (tile.redium > 1 and unit.redium < unit.job.carry_limit):
-            target = tile
+        if (tile.blueium > 0 and unit.blueium < unit.job.carry_limit) \
+                or (tile.redium > 0 and unit.redium < unit.job.carry_limit):
+            if len(self.find_path(unit.tile, tile)) < distance:
+                distance = len(self.find_path(unit.tile, tile))
+                target = tile
+            print('Manager path to ready materials found, path is length: ' + str(distance))
 
     if target is None and unit.blueium == 0 and unit.redium == 0:
         for enemy in self.game.units:
             # Only does anything for an intern that is owned by your opponent.
             if enemy.tile is not None and enemy.owner == self.player.opponent and enemy.job.title == 'intern':
                 # Moves towards the intern until reached or out of moves.
+                print('Manager finds no ready materials, heading toward intern at distance: '+str(len(self.find_path(unit.tile, enemy.tile))))
                 while unit.moves > 0 and len(self.find_path(unit.tile, enemy.tile)) > 0:
                     if not unit.move(self.find_path(unit.tile, enemy.tile)[0]):
                         break
@@ -26,9 +31,11 @@ def manager_logic(unit, self):
                     if enemy.stun_time == 0 and enemy.stun_immune == 0:
                         # Stuns the enemy intern if they are not stunned and not immune.
                         unit.act(enemy.tile)
+                        print('Manager stuns intern')
                     else:
                         # Attacks the intern otherwise.
                         unit.attack(enemy.tile)
+                        print('Manager attacked intern')
                 break
 
     elif target is not None:
