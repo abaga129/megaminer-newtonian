@@ -69,7 +69,7 @@ def manager_logic(unit, self):
                 break
 
         # Deposits blueium in our generator if we have reached it.
-        if len(self.find_path(unit.tile, gen_tile)) <= 1:
+        if len(self.find_path(unit.tile, gen_tile)) <= 0:
             if unit.blueium > 0:
                 print('***********************************************************************')
                 print('Manager ' + str(unit.id) + ' dropping off refined blueium')

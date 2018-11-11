@@ -20,7 +20,7 @@ def intern_logic(unit, self):
         ore_type = 'blueium ore'
         print('Intern ore priority: ' + ore_type+ ' because blueium already held.')
     elif unit.redium_ore >= 1:
-        ore_type = 'redium_ore'
+        ore_type = 'redium ore'
         print('Intern ore priority: ' + ore_type+ ' because redium already held.')
     else:
         ore_type = check_ore_priority(self)
