@@ -91,7 +91,7 @@ class AI(BaseAI):
 
             elif unit_is_manager(unit):
                 manager_logic(unit, self)
-
+            print('Taking turn')
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
