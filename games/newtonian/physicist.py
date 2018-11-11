@@ -1,8 +1,10 @@
 #
 # Primary function of physicist: 
 # Run machines to refine ore into blueium and redium
-#
-
+# Do in this order of importance:
+#   - travel to machines with ore, act on machines to refine ore
+#   - carry refined ore back to generator ** not implemented
+#   - fight enemies
 
 def physicist_logic(unit, self):
     target = None

@@ -3,7 +3,9 @@ from .ai_controller import *
 #
 # Primary function of intern: 
 # Carry ore to machines for physicist to refine
-#
+# Do in this order of importance:
+#   - travel to ore, collect and drop into machines
+#   - break enemy machines ** not implemented
 
 
 def intern_logic(unit, self):

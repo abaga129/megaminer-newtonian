@@ -1,20 +1,32 @@
 #
 # Primary function of manager: 
 # Carry refined blueium and redium
-# Find enemy interns, stuns, and attacks them if there is no materials to take to the generator.
-#
+# Find enemy interns, stuns, and attacks them if there is no materials to take to the generator
+# Do in this order of importance:
+#   - travel to refined materials, collect from machines, take to generator
+#   - travel toward ore in machines that are likely to be refined by a physicist
+#   - fight enemies
 
 def manager_logic(unit, self):
     target = None
-    distance = 1000
+    distanceToRefined = 1000
+    distanceToOre =1000
 
     for tile in self.game.tiles:
-        if (tile.blueium > 0 and unit.blueium < unit.job.carry_limit) \
-                or (tile.redium > 0 and unit.redium < unit.job.carry_limit):
-            if len(self.find_path(unit.tile, tile)) < distance:
-                distance = len(self.find_path(unit.tile, tile))
+        if unit.blueium > 0 or unit.redium > 0:
+            # then don't chase after ore that hasn't been refined yet
+            print('Manager decides not to chase anything, has some goods trying not to die with')
+        elif (tile.blueium_ore > 0 and tile.machine is not None) or (tile.redium_ore > 0 and tile.machine is not None):
+            if distanceToOre > len(self.find_path(unit.tile, tile)):
+                distanceToOre = len(self.find_path(unit.tile, tile))
                 target = tile
-            print('Manager path to ready materials found, path is length: ' + str(distance))
+            print('Manager path to almost ready materials found, path is length: ' + str(distanceToOre))
+
+        if (tile.blueium > 0 and unit.blueium < unit.job.carry_limit) or (tile.redium > 0 and unit.redium < unit.job.carry_limit):
+            if len(self.find_path(unit.tile, tile)) < distanceToRefined:
+                distanceToRefined = len(self.find_path(unit.tile, tile))
+                target = tile
+            print('Manager path to ready materials found, path is length: ' + str(distanceToRefined))
 
     if target is None and unit.blueium == 0 and unit.redium == 0:
         for enemy in self.game.units:
@@ -38,7 +50,7 @@ def manager_logic(unit, self):
                         print('Manager attacked intern')
                 break
 
-    elif target is not None:
+    elif target is not None and unit.blueium == 0 and unit.redium == 0:
         # Moves towards our target until at the target or out of moves.
         while unit.moves > 0 and len(self.find_path(unit.tile, target)) > 1:
             if not unit.move(self.find_path(unit.tile, target)[0]):
