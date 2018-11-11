@@ -23,25 +23,30 @@ class MapState:
 def check_ore_priority(self):
     num_redium_ore = num_ore_held_by_units(self, 'redium ore')
     num_blueium_ore = num_ore_held_by_units(self, 'blueium ore')
-    #print('Holding Redium Ore: ' + str(num_redium_ore))
-    #print('Holding Blueium Ore: ' + str(num_blueium_ore))
-    #print('CHECK GET STARTING SIDE: ' + get_starting_side(self))
-    if self.side == 'red':
-        # favors blueium ore since it is closer
-        if num_redium_ore == num_blueium_ore:
-            return 'blueium ore'
-        elif num_redium_ore < num_blueium_ore:
-            return 'redium ore'
+    num_heat = self.player.heat
+    num_pressure = self.player.pressure
+    
+    if num_heat < 1 and num_pressure < 1:
+        if self.side == 'red':
+            # favors blueium ore since it is closer
+            if num_redium_ore == num_blueium_ore:
+                return 'blueium ore'
+            elif num_redium_ore < num_blueium_ore:
+                return 'redium ore'
+            else:
+                return 'blueium ore'
         else:
-            return 'blueium ore'
+            # favors redium ore since it is closer
+            if num_redium_ore == num_blueium_ore:
+                return 'redium ore'
+            elif num_redium_ore > num_blueium_ore:
+                return 'blueium ore'
+            else:
+                return 'redium ore'
+    elif num_heat > 1:
+        return 'blueium ore'
     else:
-        # favors redium ore since it is closer
-        if num_redium_ore == num_blueium_ore:
-            return 'redium ore'
-        elif num_redium_ore > num_blueium_ore:
-            return 'blueium ore'
-        else:
-            return 'redium ore'
+        return 'redium ore'
 
 
 def num_ore_held_by_units(self, ore_type):

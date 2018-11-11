@@ -14,9 +14,7 @@ def manager_logic(unit, self):
             if len(self.find_path(unit.tile, tile)) < distance:
                 distance = len(self.find_path(unit.tile, tile))
                 target = tile
-            print('***********************************************************************')
             print('Manager path to ready materials found, path is length: ' + str(distance))
-            print('***********************************************************************')
 
     if target is None and unit.blueium == 0 and unit.redium == 0:
         for enemy in self.game.units:
