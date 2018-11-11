@@ -52,20 +52,6 @@ def manager_logic(unit, self):
                 break
 
     elif target is not None and unit.blueium == 0 and unit.redium == 0:
-        # Picks up blueium once we reach our target's tile.
-        if len(self.find_path(unit.tile, target)) <= 1 and target.blueium > 0:
-            print('***********************************************************************')
-            print('MANAGER ' + str(unit.id) + ' PICKING UP REFINED BLUEIUM')
-            print('***********************************************************************')
-            unit.pickup(target, 0, 'blueium')
-
-        # Picks up blueium once we reach our target's tile.
-        if len(self.find_path(unit.tile, target)) <= 1 and target.redium > 0:
-            print('***********************************************************************')
-            print('MANAGER ' + str(unit.id) + ' PICKING UP REFINED REDIUM')
-            print('***********************************************************************')
-            unit.pickup(target, 0, 'redium')
-
         # Moves towards our target until at the target or out of moves.
         while unit.moves > 0 and len(self.find_path(unit.tile, target)) > 1:
             if not unit.move(self.find_path(unit.tile, target)[0]):
