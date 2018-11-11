@@ -27,7 +27,7 @@ def intern_logic(unit, self):
         print('Intern ore priority set in controller as ' + ore_type+ ' because none held.')
 
     # As long as there is available capacity, look for some ore!
-    if totalOre < 2:
+    if totalOre < 4:
         if ore_type == 'blueium ore':
             print('Intern going for blueium ore')
 
@@ -66,12 +66,12 @@ def intern_logic(unit, self):
 
     # Since there is no available capacity, deposit biggest ore amount
     elif unit.blueium_ore > unit.redium_ore:
-        print('Intern going to deposit blueium ore')
+        #print('Intern going to deposit blueium ore')
         # Deposits blueium ore in a machine for it if we have any.
-        machine = find_closest_machine(self, unit, 'blueium')
+        machine = best_machine(self, 'blueium', unit.blueium_ore, unit.tile)
         if machine.tile is not None:
             # Moves towards the found machine until we reach it or are out of moves.
-            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 1:
+            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 0:
                 if not unit.move(self.find_path(unit.tile, machine.tile)[0]):
                     break
             # Deposits blueium ore on the machine if we have reached it.
@@ -79,18 +79,34 @@ def intern_logic(unit, self):
                 unit.drop(machine.tile, 0, 'blueium ore')
 
     else:
-        print('Intern going to deposit redium ore')
+        #print('Intern going to deposit redium ore')
         # Deposits ore to closest related machine that will process it
-        machine = find_closest_machine(self, unit, 'redium')
+        machine = best_machine(self, 'redium', unit.redium_ore, unit.tile)
         if machine.tile is not None:
             # Moves towards the found machine until we reach it or are out of moves.
-            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 1:
+            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 0:
                 if not unit.move(self.find_path(unit.tile, machine.tile)[0]):
                     break
             # Deposits blueium ore on the machine if we have reached it.
             if len(self.find_path(unit.tile, machine.tile)) <= 1:
                 unit.drop(machine.tile, 0, 'redium ore')
 
+
+#
+# Returns the best machine object for the following unit attributes:
+# ore_type = 'blueium' or 'redium'
+# amount = number ore held by unit
+# current_location = tile of unit
+#
+def best_machine(self, ore_type, amount, current_location):
+    distance_to_machine = 1000000
+    best = None
+    for unit in self.game.machines:
+        if unit.ore_type == ore_type and amount >= unit.refine_input and len(self.find_path(current_location, unit.tile)) < distance_to_machine:
+            distance_to_machine = len(self.find_path(current_location, unit.tile))            
+            best = unit
+    print('Intern traveling to best machine to desposit ore at distance : ' + str(distance_to_machine))
+    return best
 
 # It is possible that this method will return a machine that doesnt have a tile.  Check that machine.tile is not None
 def find_closest_machine(self, unit, ore_type):
