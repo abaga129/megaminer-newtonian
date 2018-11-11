@@ -8,11 +8,17 @@ def physicist_logic(unit, self):
     target = None
 
     # Goes through all the machines in the game and picks one that is ready to process ore as its target.
+    distance = 100000
     for machine in self.game.machines:
         if machine.tile.blueium_ore >= machine.refine_input or machine.tile.redium_ore >= machine.refine_input:
-            target = machine.tile
+            if len(self.find_path(unit.tile, machine.tile)) < distance:
+                distance = len(self.find_path(unit.tile, machine.tile))
+                target = machine.tile
+        print('Physicist path to ready machine found, path is length: ' + str(distance))
+
 
     if target is None:
+        print('Physicist finds no ready machines, looking for managers.')
         # Chases down enemy managers if there are no machines that are ready to be worked.
         for enemy in self.game.units:
             # Only does anything if the unit that we found is a manager and belongs to our opponent.
@@ -27,9 +33,11 @@ def physicist_logic(unit, self):
                     if enemy.stun_time == 0 and enemy.stun_immune == 0:
                         # Stuns the enemy manager if they are not stunned and not immune.
                         unit.act(enemy.tile)
+                        print('Physicist stuns manager')
                     else:
                         # Attacks the manager otherwise.
                         unit.attack(enemy.tile)
+                        print('Physicist attacks manager')
                 break
 
     else:
@@ -47,3 +55,4 @@ def physicist_logic(unit, self):
         # Acts on the target machine to run it if the physicist is adjacent.
         if adjacent and not unit.acted:
             unit.act(target)
+            print('Physicist running machine')
