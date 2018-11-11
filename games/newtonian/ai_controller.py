@@ -25,15 +25,20 @@ def check_ore_priority(self):
     num_blueium_ore = num_ore_held_by_units(self, 'blueium ore')
     print('Holding Redium Ore: ' + str(num_redium_ore))
     print('Holding Blueium Ore: ' + str(num_blueium_ore))
-    if self.side == 'red':
+    print('CHECK GET STARTING SIDE: ' + get_starting_side(self))
+    if get_starting_side(self) == 'red':
         # favors blueium ore since it is closer
-        if num_redium_ore < num_blueium_ore:
+        if num_redium_ore == num_blueium_ore:
+            return 'blueium ore'
+        elif num_redium_ore < num_blueium_ore:
             return 'redium ore'
         else:
             return 'blueium ore'
     else:
         # favors redium ore since it is closer
-        if num_blueium_ore < num_redium_ore:
+        if num_redium_ore == num_blueium_ore:
+            return 'redium ore'
+        elif num_redium_ore < num_blueium_ore:
             return 'blueium ore'
         else:
             return 'redium ore'
@@ -67,16 +72,12 @@ def best_machine(self, ore_type, amount, current_location):
 
 
 def get_starting_side(self):
-    red_start_distance = 100000
-    blue_start_distance = 100000
-    red_start = self.game.get_tile_at(0, 0)
-    blue_start = self.game.get_tile_at(self.game.map_width, 0)
-    for tile in self.game.tiles:
-        if tile.redium_ore > 0:
-            red_start_distance = len(self.find_path(red_start, tile))
-            blue_start_distance = len(self.find_path(blue_start, tile))
-
-    if red_start_distance > blue_start_distance:
-        return 'red'
-    else:
-        return 'blue'
+    for player in self.game.players:
+        if player.name == 'DeEzNuTZ':
+            for spawnTile in player.spawn_tiles:
+                if int(float(spawnTile.id)) < 1000:
+                    print('starting on the red side')
+                    return 'red'
+                else:
+                    print('starting on the blue side')
+                    return 'blue'
