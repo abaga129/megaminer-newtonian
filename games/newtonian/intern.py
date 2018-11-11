@@ -29,15 +29,13 @@ def intern_logic(unit, self):
     # As long as there is available capacity, look for some ore!
     if totalOre < 4:
         if ore_type == 'blueium ore':
-            print('Intern going for blueium ore')
-
             # Goes to collect any ore that isn't on a machine, and that is closest            
             for tile in self.game.tiles:
                 if tile.blueium_ore > 0 and tile.machine is None:
                     if len(self.find_path(unit.tile, tile)) < shortestlength:
                         shortestlength = len(self.find_path(unit.tile, tile))
-                        print('Intern shorter path to ore found, path is length: ' + str(shortestlength))
                         target = tile
+            print('Intern shortest path to blueium ore found, path is length: ' + str(shortestlength))
             # Moves towards our target until at the target or out of moves.
             if len(self.find_path(unit.tile, target)) > 0:
                 while unit.moves > 0 and len(self.find_path(unit.tile, target)) > 0:
@@ -53,8 +51,8 @@ def intern_logic(unit, self):
                 if tile.redium_ore > 0 and tile.machine is None:
                     if len(self.find_path(unit.tile, tile)) < shortestlength:
                         shortestlength = len(self.find_path(unit.tile, tile))
-                        print('Intern shorter path to ore found, path is length: ' + str(shortestlength))
                         target = tile
+            print('Intern shortest path to redium ore found, path is length: ' + str(shortestlength))
             # Moves towards our target until at the target or out of moves.
             if len(self.find_path(unit.tile, target)) > 0:
                 while unit.moves > 0 and len(self.find_path(unit.tile, target)) > 0:
@@ -76,7 +74,8 @@ def intern_logic(unit, self):
                     break
             # Deposits blueium ore on the machine if we have reached it.
             if len(self.find_path(unit.tile, machine.tile)) <= 1:
-                unit.drop(machine.tile, 0, 'blueium ore')
+                unit.drop(machine.tile, machine.refine_input, 'blueium ore')
+                print('INTERN DROPPED ORE IN MACHINE!')
 
     else:
         #print('Intern going to deposit redium ore')
@@ -87,9 +86,10 @@ def intern_logic(unit, self):
             while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 0:
                 if not unit.move(self.find_path(unit.tile, machine.tile)[0]):
                     break
-            # Deposits blueium ore on the machine if we have reached it.
+            # Deposits redium ore on the machine if we have reached it.
             if len(self.find_path(unit.tile, machine.tile)) <= 1:
-                unit.drop(machine.tile, 0, 'redium ore')
+                unit.drop(machine.tile, machine.refine_input, 'redium ore')
+                print('INTERN DROPPED ORE IN MACHINE!')
 
 
 #
