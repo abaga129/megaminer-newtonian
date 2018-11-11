@@ -90,15 +90,28 @@ class AI(BaseAI):
         print('----------------Running new turn---------------------')
         # Goes through all the units that you own.
         # we can make this smarter by sorting through the types of units and passing multiple to each
+        physicists = []
+        interns = []
+        managers = []
+
         for unit in self.player.units:
-            if unit_is_physicist(unit):
-                physicist_logic(unit, self)
-
-            elif unit_is_intern(unit):
+            if unit_is_intern(unit):
+                interns.append(unit)
                 intern_logic(unit, self)
-
+            elif unit_is_physicist(unit):
+                physicists.append(unit)
+                physicist_logic(unit, self)
             elif unit_is_manager(unit):
+                managers.append(unit)
                 manager_logic(unit, self)
+
+        #
+        # We could send a list of each role like this
+        # after a little extra thought, I'm not sure the exact area of benefit
+        # 
+        #intern_logic(interns, self)
+        #physicist_logic(physicists, self)
+        #manager_logic(managers, self)
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
