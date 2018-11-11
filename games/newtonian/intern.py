@@ -1,4 +1,5 @@
-import logging
+import joueur.ansi_color_coder as color
+
 
 def intern_logic(unit, self):
     # If the unit is an intern, collects blueium ore.
@@ -15,7 +16,8 @@ def intern_logic(unit, self):
             if tile.blueium_ore > 0 and tile.machine is None:
                 if len(self.find_path(unit.tile, tile)) < shortestlength:
                     shortestlength = len(self.find_path(unit.tile, tile))
-                    logging.info('shorter path to ore found, path is length: '+shortestlength)
+                    print('shorter path to ore found, path is length: ' + str(shortestlength))
+                    # logging.info('shorter path to ore found, path is length: '+shortestlength)
                     target = tile
 
         # Moves towards our target until at the target or out of moves.
