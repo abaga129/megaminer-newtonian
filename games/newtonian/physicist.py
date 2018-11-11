@@ -55,4 +55,6 @@ def physicist_logic(unit, self):
         # Acts on the target machine to run it if the physicist is adjacent.
         if adjacent and not unit.acted:
             unit.act(target)
+            print('***********************************************************************')
             print('PHYSICIST RUNNING MACHINE!')
+            print('***********************************************************************')

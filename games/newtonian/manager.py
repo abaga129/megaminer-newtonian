@@ -14,7 +14,9 @@ def manager_logic(unit, self):
             if len(self.find_path(unit.tile, tile)) < distance:
                 distance = len(self.find_path(unit.tile, tile))
                 target = tile
+            print('***********************************************************************')
             print('Manager path to ready materials found, path is length: ' + str(distance))
+            print('***********************************************************************')
 
     if target is None and unit.blueium == 0 and unit.redium == 0:
         for enemy in self.game.units:
@@ -45,13 +47,17 @@ def manager_logic(unit, self):
                 break
 
         # Picks up blueium once we reach our target's tile.
-        if len(self.find_path(unit.tile, target)) <= 1 and target.blueium > 0:
+        if len(self.find_path(unit.tile, target)) <= 1 and target.blueium > 0:            
+            print('***********************************************************************')
             print('Manager ' + str(unit.id) + ' picking up refined blueium')
+            print('***********************************************************************')
             unit.pickup(target, 0, 'blueium')
 
         # Picks up blueium once we reach our target's tile.
         if len(self.find_path(unit.tile, target)) <= 1 and target.redium > 0:
+            print('***********************************************************************')
             print('Manager ' + str(unit.id) + ' picking up refined redium')
+            print('***********************************************************************')
             unit.pickup(target, 0, 'redium')
 
     elif target is None and (unit.blueium > 0 or unit.redium > 0):
@@ -65,10 +71,14 @@ def manager_logic(unit, self):
         # Deposits blueium in our generator if we have reached it.
         if len(self.find_path(unit.tile, gen_tile)) <= 1:
             if unit.blueium > 0:
+                print('***********************************************************************')
                 print('Manager ' + str(unit.id) + ' dropping off refined blueium')
+                print('***********************************************************************')
                 unit.drop(gen_tile, 0, 'blueium')
             elif unit.redium > 0:
+                print('***********************************************************************')
                 print('Manager ' + str(unit.id) + ' dropping off refined redium')
+                print('***********************************************************************')
                 unit.drop(gen_tile, 0, 'redium')
 
 

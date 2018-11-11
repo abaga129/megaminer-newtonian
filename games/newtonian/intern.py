@@ -75,7 +75,9 @@ def intern_logic(unit, self):
             # Deposits blueium ore on the machine if we have reached it.
             if len(self.find_path(unit.tile, machine.tile)) <= 1:
                 unit.drop(machine.tile, machine.refine_input, 'blueium ore')
+                print('***********************************************************************')
                 print('INTERN DROPPED ORE IN MACHINE!')
+                print('***********************************************************************')
 
     else:
         #print('Intern going to deposit redium ore')
@@ -89,7 +91,9 @@ def intern_logic(unit, self):
             # Deposits redium ore on the machine if we have reached it.
             if len(self.find_path(unit.tile, machine.tile)) <= 1:
                 unit.drop(machine.tile, machine.refine_input, 'redium ore')
+                print('***********************************************************************')
                 print('INTERN DROPPED ORE IN MACHINE!')
+                print('***********************************************************************')
 
 
 #
