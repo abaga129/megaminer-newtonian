@@ -14,7 +14,7 @@ def physicist_logic(unit, self):
             if len(self.find_path(unit.tile, machine.tile)) < distance:
                 distance = len(self.find_path(unit.tile, machine.tile))
                 target = machine.tile
-        print('Physicist path to ready machine found, path is length: ' + str(distance))
+            print('Physicist path to ready machine found, path is length: ' + str(distance))
 
 
     if target is None:
