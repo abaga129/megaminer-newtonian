@@ -81,13 +81,13 @@ class AI(BaseAI):
 
     def run_turn(self):
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        print('Running turn')
 
         if self.side == '':
             print('Getting starting side')
             self.side = get_starting_side(self)
             print('side is ' + self.side)
 
+        print('----------------Running new turn---------------------')
         # Goes through all the units that you own.
         for unit in self.player.units:
             if unit_is_physicist(unit):
@@ -98,7 +98,6 @@ class AI(BaseAI):
 
             elif unit_is_manager(unit):
                 manager_logic(unit, self)
-
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
