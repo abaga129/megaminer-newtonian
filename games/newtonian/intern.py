@@ -39,11 +39,15 @@ def intern_logic(unit, self):
                         target = tile
             print('Intern shortest path to blueium ore found, path is length: ' + str(shortestlength))
             # Moves towards our target until at the target or out of moves.
+            # Picks up the appropriate resource once we reach our target's tile.
+            if unit.tile == target and target.blueium_ore > 0:
+                unit.pickup(target, 0, 'blueium ore')
+
             if len(self.find_path(unit.tile, target)) > 0:
                 while unit.moves > 0 and len(self.find_path(unit.tile, target)) > 0:
                     if not unit.move(self.find_path(unit.tile, target)[0]):
                         break
-            # Picks up the appropriate resource once we reach our target's tile.
+
             if unit.tile == target and target.blueium_ore > 0:
                 unit.pickup(target, 0, 'blueium ore')
 
@@ -54,15 +58,22 @@ def intern_logic(unit, self):
                     if len(self.find_path(unit.tile, tile)) < shortestlength:
                         shortestlength = len(self.find_path(unit.tile, tile))
                         target = tile
+
+            # Picks up the appropriate resource once we reach our target's tile.
+            if unit.tile == target and target.redium_ore > 0:
+                unit.pickup(target, 0, 'redium ore')
+
             print('Intern shortest path to redium ore found, path is length: ' + str(shortestlength))
             # Moves towards our target until at the target or out of moves.
             if len(self.find_path(unit.tile, target)) > 0:
                 while unit.moves > 0 and len(self.find_path(unit.tile, target)) > 0:
                     if not unit.move(self.find_path(unit.tile, target)[0]):
                         break
+
             # Picks up the appropriate resource once we reach our target's tile.
             if unit.tile == target and target.redium_ore > 0:
                 unit.pickup(target, 0, 'redium ore')
+
 
     # Since there is no available capacity, deposit biggest ore amount
     elif unit.blueium_ore > unit.redium_ore:
@@ -70,10 +81,6 @@ def intern_logic(unit, self):
         # Deposits blueium ore in a machine for it if we have any.
         machine = best_machine(self, 'blueium', unit.blueium_ore, unit.tile)
         if machine.tile is not None:
-            # Moves towards the found machine until we reach it or are out of moves.
-            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 0:
-                if not unit.move(self.find_path(unit.tile, machine.tile)[0]):
-                    break
             # Deposits blueium ore on the machine if we have reached it.
             if len(self.find_path(unit.tile, machine.tile)) <= 1:
                 unit.drop(machine.tile, machine.refine_input, 'blueium ore')
@@ -81,22 +88,26 @@ def intern_logic(unit, self):
                 print('INTERN DROPPED ORE IN MACHINE!')
                 print('***********************************************************************')
 
+            # Moves towards the found machine until we reach it or are out of moves.
+            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 0:
+                if not unit.move(self.find_path(unit.tile, machine.tile)[0]):
+                    break
+
     else:
         #print('Intern going to deposit redium ore')
         # Deposits ore to closest related machine that will process it
         machine = best_machine(self, 'redium', unit.redium_ore, unit.tile)
         if machine.tile is not None:
-            # Moves towards the found machine until we reach it or are out of moves.
-            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 0:
-                if not unit.move(self.find_path(unit.tile, machine.tile)[0]):
-                    break
             # Deposits redium ore on the machine if we have reached it.
             if len(self.find_path(unit.tile, machine.tile)) <= 1:
                 unit.drop(machine.tile, machine.refine_input, 'redium ore')
                 print('***********************************************************************')
                 print('INTERN DROPPED ORE IN MACHINE!')
                 print('***********************************************************************')
-
+            # Moves towards the found machine until we reach it or are out of moves.
+            while unit.moves > 0 and len(self.find_path(unit.tile, machine.tile)) > 0:
+                if not unit.move(self.find_path(unit.tile, machine.tile)[0]):
+                    break
 
 #
 # Returns the best machine object for the following unit attributes:

@@ -26,12 +26,6 @@ def physicist_logic(unit, self):
             # Only does anything if the unit that we found is a manager and belongs to our opponent.
             if enemy.tile is not None and enemy.owner == self.player.opponent and enemy.job.title == 'manager':
                 # Moves towards the manager.
-                print('Physicist finds no ready machines, heading toward manager at distance: '+str(len(self.find_path(unit.tile, enemy.tile))))
-                while unit.moves > 0 and len(self.find_path(unit.tile, enemy.tile)) > 0:
-                    # Moves until there are no moves left for the physicist.
-                    if not unit.move(self.find_path(unit.tile, enemy.tile)[0]):
-                        break
-
                 if unit.tile in enemy.tile.get_neighbors():
                     if enemy.stun_time == 0 and enemy.stun_immune == 0:
                         # Stuns the enemy manager if they are not stunned and not immune.
@@ -41,6 +35,12 @@ def physicist_logic(unit, self):
                         # Attacks the manager otherwise.
                         unit.attack(enemy.tile)
                         print('Physicist attacks manager')
+
+                print('Physicist finds no ready machines, heading toward manager at distance: '+str(len(self.find_path(unit.tile, enemy.tile))))
+                while unit.moves > 0 and len(self.find_path(unit.tile, enemy.tile)) > 0:
+                    # Moves until there are no moves left for the physicist.
+                    if not unit.move(self.find_path(unit.tile, enemy.tile)[0]):
+                        break
                 break
 
     else:
@@ -49,6 +49,13 @@ def physicist_logic(unit, self):
         for tile in target.get_neighbors():
             if tile == unit.tile:
                 adjacent = True
+
+        # Acts on the target machine to run it if the physicist is adjacent.
+        if adjacent and not unit.acted:
+            unit.act(target)
+            print('***********************************************************************')
+            print('PHYSICIST RUNNING MACHINE!')
+            print('***********************************************************************')
 
         # If there is a machine that is waiting to be worked on, go to it.
         while unit.moves > 0 and len(self.find_path(unit.tile, target)) > 1 and not adjacent:

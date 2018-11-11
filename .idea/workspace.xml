@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b1bacd42-7b14-4ea1-8270-7864058a06e6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/newtonian/ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/games/newtonian/ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/newtonian/intern.py" beforeDir="false" afterPath="$PROJECT_DIR$/games/newtonian/intern.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/games/newtonian/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/games/newtonian/manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/games/newtonian/physicist.py" beforeDir="false" afterPath="$PROJECT_DIR$/games/newtonian/physicist.py" afterDir="false" />
     </list>
@@ -13,60 +13,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/games/newtonian/ai.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="222">
-                    <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-                    <folding>
-                      <element signature="e#59#92#0" expanded="true" />
-                      <marker date="1541907059326" expanded="true" signature="1551:1557" ph="..." />
-                      <marker date="1541907059326" expanded="true" signature="3013:3022" ph="..." />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/games/newtonian/intern.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="593">
-                    <caret line="100" column="73" selection-start-line="100" selection-start-column="73" selection-end-line="100" selection-end-column="73" />
-                    <folding>
-                      <marker date="1541903646036" expanded="true" signature="4656:4661" ph="..." />
-                      <marker date="1541903646036" expanded="true" signature="5210:5216" ph="..." />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/games/newtonian/game.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="758">
-                    <caret line="258" column="11" lean-forward="true" selection-start-line="258" selection-start-column="11" selection-end-line="258" selection-end-column="11" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1027798385">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.4" value="2" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.4" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -84,14 +38,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="5274" />
+          <entry key="py" value="5312" />
           <entry key="testRun" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="30" />
-          <entry key="Python" value="5274" />
+          <entry key="Python" value="5312" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -104,69 +58,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/games/newtonian/physicist.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="44" lean-forward="true" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/games/newtonian/ai_controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
-              <folding>
-                <marker date="1541903356103" expanded="true" signature="258:347" ph="..." />
-                <marker date="1541903356103" expanded="true" signature="386:395" ph="..." />
-                <marker date="1541903356103" expanded="true" signature="613:618" ph="..." />
-                <marker date="1541903356103" expanded="true" signature="1294:1299" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/games/newtonian/player.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/joueur/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-422">
-              <caret line="29" column="8" lean-forward="true" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testRun">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/games/newtonian/manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+            <state relative-caret-position="495">
+              <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
               <folding>
-                <marker date="1541906203931" expanded="true" signature="3257:3258" ph="..." />
+                <marker date="1541955113706" expanded="true" signature="7117:7118" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/games/newtonian/intern.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="56" column="48" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/games/newtonian/physicist.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="52" selection-start-line="52" selection-end-line="57" selection-end-column="92" />
             </state>
           </provider>
         </entry>
@@ -194,10 +110,10 @@
       <list>
         <option value="$PROJECT_DIR$/testRun" />
         <option value="$PROJECT_DIR$/games/newtonian/ai_controller.py" />
-        <option value="$PROJECT_DIR$/games/newtonian/intern.py" />
-        <option value="$PROJECT_DIR$/games/newtonian/manager.py" />
-        <option value="$PROJECT_DIR$/games/newtonian/physicist.py" />
         <option value="$PROJECT_DIR$/games/newtonian/ai.py" />
+        <option value="$PROJECT_DIR$/games/newtonian/intern.py" />
+        <option value="$PROJECT_DIR$/games/newtonian/physicist.py" />
+        <option value="$PROJECT_DIR$/games/newtonian/manager.py" />
       </list>
     </option>
   </component>
@@ -275,7 +191,7 @@
     <frame x="1678" y="31" width="1684" height="1021" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14423658" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14423658" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -286,7 +202,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.22742476" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.22742476" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32998884" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -349,49 +265,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/games/newtonian/intern.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="100" column="73" selection-start-line="100" selection-start-column="73" selection-end-line="100" selection-end-column="73" />
-          <folding>
-            <marker date="1541903646036" expanded="true" signature="4656:4661" ph="..." />
-            <marker date="1541903646036" expanded="true" signature="5210:5216" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-242" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/games/newtonian/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
-          <folding>
-            <marker date="1541906203931" expanded="true" signature="3257:3258" ph="..." />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/games/newtonian/ai_controller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
           <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
-          <folding>
-            <marker date="1541903356103" expanded="true" signature="258:347" ph="..." />
-            <marker date="1541903356103" expanded="true" signature="386:395" ph="..." />
-            <marker date="1541903356103" expanded="true" signature="613:618" ph="..." />
-            <marker date="1541903356103" expanded="true" signature="1294:1299" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/games/newtonian/physicist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="44" lean-forward="true" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -401,8 +283,30 @@
           <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding>
             <element signature="e#59#92#0" expanded="true" />
-            <marker date="1541907059326" expanded="true" signature="1551:1557" ph="..." />
-            <marker date="1541907059326" expanded="true" signature="3013:3022" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/games/newtonian/intern.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="56" column="48" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/games/newtonian/physicist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="52" selection-start-line="52" selection-end-line="57" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/games/newtonian/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
+          <folding>
+            <marker date="1541955113706" expanded="true" signature="7117:7118" ph="..." />
           </folding>
         </state>
       </provider>
