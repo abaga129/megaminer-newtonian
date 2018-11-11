@@ -89,6 +89,7 @@ class AI(BaseAI):
 
         print('----------------Running new turn---------------------')
         # Goes through all the units that you own.
+        # we can make this smarter by sorting through the types of units and passing multiple to each
         for unit in self.player.units:
             if unit_is_physicist(unit):
                 physicist_logic(unit, self)
