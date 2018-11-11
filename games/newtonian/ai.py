@@ -17,6 +17,7 @@ from .ai_controller import *
 
 class AI(BaseAI):
     """ The AI you add and improve code inside to play Newtonian. """
+    side = ''
 
     @property
     def game(self):
@@ -42,7 +43,7 @@ class AI(BaseAI):
             str: The name of your Player.
         """
         # <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return "WooblySausageლ(ಠ益ಠლ)";
+        return "YourMomUsesWindows";
         # <<-- /Creer-Merge: get-name -->>
 
     def start(self):
@@ -81,6 +82,12 @@ class AI(BaseAI):
     def run_turn(self):
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         print('Running turn')
+
+        if self.side == '':
+            print('Getting starting side')
+            self.side = get_starting_side(self)
+            print('side is ' + self.side)
+
         # Goes through all the units that you own.
         for unit in self.player.units:
             if unit_is_physicist(unit):
