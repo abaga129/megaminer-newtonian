@@ -8,10 +8,11 @@ def manager_logic(unit, self):
     target = None
 
     for tile in self.game.tiles:
-        if tile.blueium > 1 and unit.blueium < unit.job.carry_limit:
+        if (tile.blueium > 1 and unit.blueium < unit.job.carry_limit) \
+                or (tile.redium > 1 and unit.redium < unit.job.carry_limit):
             target = tile
 
-    if target is None and unit.blueium == 0:
+    if target is None and unit.blueium == 0 and unit.redium == 0:
         for enemy in self.game.units:
             # Only does anything for an intern that is owned by your opponent.
             if enemy.tile is not None and enemy.owner == self.player.opponent and enemy.job.title == 'intern':
@@ -38,11 +39,16 @@ def manager_logic(unit, self):
 
         # Picks up blueium once we reach our target's tile.
         if len(self.find_path(unit.tile, target)) <= 1 and target.blueium > 0:
+            print('Manager ' + unit + ' picking up refined blueium')
             unit.pickup(target, 0, 'blueium')
 
-    elif target is None and unit.blueium > 0:
-        # Stores a tile that is part of your generator.
-        gen_tile = self.player.generator_tiles[0]
+        # Picks up blueium once we reach our target's tile.
+        if len(self.find_path(unit.tile, target)) <= 1 and target.redium > 0:
+            print('Manager ' + unit + ' picking up refined redium')
+            unit.pickup(target, 0, 'redium')
+
+    elif target is None and (unit.blueium > 0 or unit.redium > 0):
+        gen_tile = get_closest_gen_tile(self, unit)
 
         # Goes to your generator and drops blueium in.
         while unit.moves > 0 and len(self.find_path(unit.tile, gen_tile)) > 0:
@@ -51,4 +57,22 @@ def manager_logic(unit, self):
 
         # Deposits blueium in our generator if we have reached it.
         if len(self.find_path(unit.tile, gen_tile)) <= 1:
-            unit.drop(gen_tile, 0, 'blueium')
+            if unit.blueium > 0:
+                print('Manager ' + unit + ' dropping off up refined blueium')
+                unit.drop(gen_tile, 0, 'blueium')
+            elif unit.redium > 0:
+                print('Manager ' + unit + ' dropping off up refined redium')
+                unit.drop(gen_tile, 0, 'redium')
+
+
+# shell AI always defaulted to generator_tiles[0]. This method will get the closest generator tile to make
+# movement more efficient
+def get_closest_gen_tile(self, unit):
+    gen_tile = None
+    distance = 100000
+    for tile in self.player.generator_tiles:
+        d = len(self.find_path(unit.tile, tile))
+        if d < distance:
+            distance = d
+            gen_tile = tile
+    return gen_tile

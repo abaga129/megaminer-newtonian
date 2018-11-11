@@ -9,7 +9,7 @@ def physicist_logic(unit, self):
 
     # Goes through all the machines in the game and picks one that is ready to process ore as its target.
     for machine in self.game.machines:
-        if machine.tile.blueium_ore >= machine.refine_input:
+        if machine.tile.blueium_ore >= machine.refine_input or machine.tile.redium_ore >= machine.refine_input:
             target = machine.tile
 
     if target is None:
