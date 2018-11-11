@@ -50,6 +50,21 @@ def num_ore_held_by_units(self, ore_type):
             print("error unknown ore type in num_ore_held_by_units")
     return total
 
+#
+# Returns the best machine object for the following unit attributes:
+# ore_type = 'blueium' or 'redium'
+# amount = number ore held by unit
+# current_location = tile of unit
+#
+def best_machine(self, ore_type, amount, current_location):
+    distance_to_machine = 1000000
+    best = None
+    for unit in self.game.machines:
+        if unit.ore_type == ore_type and amount >= unit.refine_input and len(self.find_path(current_location, unit.tile)) < distance_to_machine:
+            distance_to_machine = len(self.find_path(current_location, unit.tile))
+            best = unit
+    return best
+
 
 def get_starting_side(self):
     red_start_distance = 100000
