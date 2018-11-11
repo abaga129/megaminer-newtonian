@@ -108,9 +108,10 @@ def best_machine(self, ore_type, amount, current_location):
     distance_to_machine = 1000000
     best = None
     for unit in self.game.machines:
-        if unit.ore_type == ore_type and amount >= unit.refine_input and len(self.find_path(current_location, unit.tile)) < distance_to_machine:
-            distance_to_machine = len(self.find_path(current_location, unit.tile))            
-            best = unit
+        if unit.ore_type == ore_type and amount >= unit.refine_input:
+            if len(self.find_path(current_location, unit.tile)) < distance_to_machine:
+                distance_to_machine = len(self.find_path(current_location, unit.tile))            
+                best = unit
     print('Intern traveling to best machine to desposit ore at distance : ' + str(distance_to_machine))
     return best
 

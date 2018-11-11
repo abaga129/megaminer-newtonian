@@ -15,7 +15,7 @@ def manager_logic(unit, self):
     for tile in self.game.tiles:
         if unit.blueium > 0 or unit.redium > 0:
             # then don't chase after ore that hasn't been refined yet
-            print('Manager decides not to chase anything, has some goods trying not to die with')
+            doNothing=''
         elif (tile.blueium_ore > 0 and tile.machine is not None) or (tile.redium_ore > 0 and tile.machine is not None):
             if distanceToOre > len(self.find_path(unit.tile, tile)):
                 distanceToOre = len(self.find_path(unit.tile, tile))
