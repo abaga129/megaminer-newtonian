@@ -18,12 +18,12 @@ def physicist_logic(unit, self):
 
 
     if target is None:
-        print('Physicist finds no ready machines, looking for managers.')
         # Chases down enemy managers if there are no machines that are ready to be worked.
         for enemy in self.game.units:
             # Only does anything if the unit that we found is a manager and belongs to our opponent.
             if enemy.tile is not None and enemy.owner == self.player.opponent and enemy.job.title == 'manager':
                 # Moves towards the manager.
+                print('Physicist finds no ready machines, heading toward manager at distance: '+str(len(self.find_path(unit.tile, enemy.tile))))
                 while unit.moves > 0 and len(self.find_path(unit.tile, enemy.tile)) > 0:
                     # Moves until there are no moves left for the physicist.
                     if not unit.move(self.find_path(unit.tile, enemy.tile)[0]):
@@ -55,4 +55,4 @@ def physicist_logic(unit, self):
         # Acts on the target machine to run it if the physicist is adjacent.
         if adjacent and not unit.acted:
             unit.act(target)
-            print('Physicist running machine')
+            print('PHYSICIST RUNNING MACHINE!')
