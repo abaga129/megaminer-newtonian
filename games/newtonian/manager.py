@@ -23,8 +23,7 @@ def manager_logic(unit, self):
             print('Manager path to almost ready materials found, path is length: ' + str(distanceToOre))
 
         if (tile.blueium > 0 and unit.blueium < unit.job.carry_limit) or (tile.redium > 0 and unit.redium < unit.job.carry_limit):
-            if len(self.find_path(unit.tile, tile)) < distanceToRefined:
-                distanceToRefined = len(self.find_path(unit.tile, tile))
+            if len(self.find_path(unit.tile, tile)) < 10:
                 target = tile
             print('Manager path to ready materials found, path is length: ' + str(distanceToRefined))
 
