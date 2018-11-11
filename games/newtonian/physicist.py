@@ -1,9 +1,10 @@
-def physicist_logic(unit, self):
-    # If the unit is a physicist, tries to work on machines that are ready, but if there are none,
-    # it finds and attacks enemy managers.
+#
+# Primary function of physicist: 
+# Run machines to refine ore into blueium and redium
+#
 
-    # Tries to find a workable machine for blueium ore.
-    # Note: You need to get redium ore as well.
+
+def physicist_logic(unit, self):
     target = None
 
     # Goes through all the machines in the game and picks one that is ready to process ore as its target.

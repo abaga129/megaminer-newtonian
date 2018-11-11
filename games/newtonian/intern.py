@@ -1,9 +1,11 @@
 import joueur.ansi_color_coder as color
 
+#
+# Primary function of intern: 
+# Carry ore to machines for physicist to refine
+#
 
 def intern_logic(unit, self):
-    # If the unit is an intern, collects blueium ore.
-    # Note: You also need to collect redium ore.
     totalOre = unit.blueium_ore + unit.redium_ore
 
     print('Intern has '+str(unit.blueium_ore)+' blueium ore.')

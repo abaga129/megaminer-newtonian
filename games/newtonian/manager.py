@@ -1,5 +1,10 @@
+#
+# Primary function of manager: 
+# Carry refined blueium and redium
+# Find enemy interns, stuns, and attacks them if there is no blueium to take to the generator.
+#
+
 def manager_logic(unit, self):
-    # Finds enemy interns, stuns, and attacks them if there is no blueium to take to the generator.
     target = None
 
     for tile in self.game.tiles:
