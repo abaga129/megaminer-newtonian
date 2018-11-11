@@ -4,9 +4,13 @@ import joueur.ansi_color_coder as color
 def intern_logic(unit, self):
     # If the unit is an intern, collects blueium ore.
     # Note: You also need to collect redium ore.
+    totalOre = unit.blueium_ore + unit.redium_ore
 
+    print('Intern has '+str(unit.blueium_ore)+' blueium ore.')
+    print('Intern has '+str(unit.redium_ore)+' redium ore.')
+    print('Intern has '+str(totalOre)+' total ore')
     # Goes to gather resources if currently carrying less than the carry limit.
-    if unit.blueium_ore < unit.job.carry_limit:
+    if totalOre < unit.job.carry_limit:
         # Your intern's current target.
         target = None
 
@@ -17,7 +21,6 @@ def intern_logic(unit, self):
                 if len(self.find_path(unit.tile, tile)) < shortestlength:
                     shortestlength = len(self.find_path(unit.tile, tile))
                     print('shorter path to ore found, path is length: ' + str(shortestlength))
-                    # logging.info('shorter path to ore found, path is length: '+shortestlength)
                     target = tile
 
         # Moves towards our target until at the target or out of moves.
